@@ -9,6 +9,7 @@ namespace MySimpleGameUsingZenject
     {
         [Inject] private Setting mSetting { get; set; }
         [Inject] DiContainer mContainer;
+        [Inject] SignalBus mSignalBus;
 
         Rigidbody2D mRigidbody2D;
         private bool isEnableMoving = true;
@@ -53,7 +54,10 @@ namespace MySimpleGameUsingZenject
                 // transform.parent.Find("GameOverPanel").gameObject.SetActive(true);
 
                 // 注入的方法
-                mContainer.Resolve<GameController>().OnGameOve(false);
+                mSignalBus.Fire(new GameOverSignal()
+                {
+                    IsWin = false
+                });
                 mContainer.Resolve<EnemyController>().StopMoving();
                 StopMoving();
             }

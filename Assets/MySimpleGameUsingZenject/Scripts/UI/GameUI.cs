@@ -8,9 +8,15 @@ namespace MySimpleGameUsingZenject
     public class GameUI : MonoBehaviour
     {
         [Inject] private DiContainer mContainer;
+        [Inject] private SignalBus mSignalBus;
         private void Awake()
         {
             mContainer.BindInstance(this);
+        }
+
+        private void Start()
+        {
+            mSignalBus.Subscribe<GameOverSignal>(OnGameOver);
         }
 
         public void ShowGameOverPanel() {
@@ -26,8 +32,8 @@ namespace MySimpleGameUsingZenject
             mContainer.Resolve<GameController>().GameRestart();
         }
 
-        public void OnGameOve(bool isWin) {
-            if (isWin)
+        public void OnGameOver(GameOverSignal gameOverSignal) {
+            if (gameOverSignal.IsWin)
             {
                 ShowGameWinPanel();
             }

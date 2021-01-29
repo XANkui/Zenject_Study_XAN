@@ -19,8 +19,6 @@ namespace MySimpleGameUsingZenject
             mContainer.Resolve<PlayerController>().ReStart();
         }
 
-        public void OnGameOve(bool isWin) {
-            mContainer.Resolve<GameUI>().OnGameOve(isWin);
-        }
+       
     }
 }
