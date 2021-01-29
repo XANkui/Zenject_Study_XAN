@@ -18,8 +18,7 @@ namespace MySimpleGameUsingZenject
             transform.Find("ResetButton").GetComponent<Button>()
                 .onClick.AddListener(()=> {
                     Show(false);
-                    mContainer.Resolve<EnemyController>().ReStart();
-                    mContainer.Resolve<PlayerController>().ReStart();
+                    mContainer.Resolve<GameUI>().GameRestart();
                 });
         }
 

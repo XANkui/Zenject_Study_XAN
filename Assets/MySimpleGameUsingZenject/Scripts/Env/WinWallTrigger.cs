@@ -15,7 +15,7 @@ namespace MySimpleGameUsingZenject
                 Debug.Log(GetType() + "/OnTriggerEnter2D()/ Game Win ……");                
 
                 // 注入的方法
-                mContainer.Resolve<GameWinPanel>().Show(true);
+                mContainer.Resolve<GameController>().OnGameOve(true);
                 mContainer.Resolve<EnemyController>().StopMoving();
                 mContainer.Resolve<PlayerController>().StopMoving();
             }

@@ -53,7 +53,7 @@ namespace MySimpleGameUsingZenject
                 // transform.parent.Find("GameOverPanel").gameObject.SetActive(true);
 
                 // 注入的方法
-                mContainer.Resolve<GameOverPanel>().Show(true);
+                mContainer.Resolve<GameController>().OnGameOve(false);
                 mContainer.Resolve<EnemyController>().StopMoving();
                 StopMoving();
             }
