@@ -31,7 +31,7 @@ namespace MySimpleGameUsingZenject
                     mRigidbody2D.AddForce(Vector2.up * mSetting.ForceScale);
                 }
             }
-            mGameModel.PlayerPos = transform.position;
+            mGameModel.PlayerPos.Value = transform.position;
         }
 
         [System.Serializable]

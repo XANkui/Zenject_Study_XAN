@@ -28,7 +28,7 @@ namespace MySimpleGameUsingZenject
 
             }
 
-            mGameModel.NPCPos = transform.position;
+            mGameModel.NPCPos.Value = transform.position;
         }
 
         [System.Serializable]

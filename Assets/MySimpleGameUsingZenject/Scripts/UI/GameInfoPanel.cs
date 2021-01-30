@@ -20,16 +20,16 @@ namespace MySimpleGameUsingZenject
 
         private void Start()
         {
-            mGameModel.OnPlayerPosChanged += UpdateView;
-            mGameModel.OnNPCPosChanged += UpdateView;
+            mGameModel.PlayerPos.OnValueChangedEvent += UpdateView;
+            mGameModel.NPCPos.OnValueChangedEvent += UpdateView;
         }
 
        
-        void UpdateView()
+        void UpdateView(Vector3 pos)
         {
             mText.text = string.Format(CONTENT_INFO,
-                                    mGameModel.PlayerPos,
-                                    mGameModel.NPCPos);
+                                    mGameModel.PlayerPos.Value,
+                                    mGameModel.NPCPos.Value);
         }
     }
 }
