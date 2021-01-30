@@ -7,7 +7,6 @@ namespace MySimpleGameUsingZenject
 {
     public class WinWallTrigger : MonoBehaviour
     {
-        [Inject] DiContainer mContainer;
         [Inject] SignalBus mSignalBus;
         private void OnTriggerEnter2D(Collider2D collision)
         {
