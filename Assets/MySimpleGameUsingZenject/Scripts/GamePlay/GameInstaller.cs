@@ -10,6 +10,7 @@ namespace MySimpleGameUsingZenject
             // ×¢²áÐÅºÅ
             SignalBusInstaller.Install(Container);
             Container.DeclareSignal<GameOverSignal>();
+            Container.DeclareSignal<GameRestartSignal>();
         }
     }
 }

@@ -20,10 +20,8 @@ namespace MySimpleGameUsingZenject
                 mSignalBus.Fire(new GameOverSignal()
                 {
                     IsWin = true
-                }); 
+                });
 
-                mContainer.Resolve<EnemyController>().StopMoving();
-                mContainer.Resolve<PlayerController>().StopMoving();
             }
         }
     }

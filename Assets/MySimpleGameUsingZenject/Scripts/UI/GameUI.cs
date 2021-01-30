@@ -28,10 +28,6 @@ namespace MySimpleGameUsingZenject
             mContainer.Resolve<GameWinPanel>().Show();
         }
 
-        public void GameRestart() {
-            mContainer.Resolve<GameController>().GameRestart();
-        }
-
         public void OnGameOver(GameOverSignal gameOverSignal) {
             if (gameOverSignal.IsWin)
             {

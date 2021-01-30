@@ -9,6 +9,7 @@ namespace MySimpleGameUsingZenject
     public class GameOverPanel : MonoBehaviour
     {
         [Inject] DiContainer mContainer;
+        [Inject] SignalBus mSignalBus;
 
         private void Awake()
         {
@@ -18,7 +19,7 @@ namespace MySimpleGameUsingZenject
             transform.Find("ResetButton").GetComponent<Button>()
                 .onClick.AddListener(()=> {
                     Show(false);
-                    mContainer.Resolve<GameUI>().GameRestart();
+                    mSignalBus.Fire<GameRestartSignal>();
                 });
         }
 

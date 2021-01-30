@@ -58,8 +58,7 @@ namespace MySimpleGameUsingZenject
                 {
                     IsWin = false
                 });
-                mContainer.Resolve<EnemyController>().StopMoving();
-                StopMoving();
+                
             }
         }
 
