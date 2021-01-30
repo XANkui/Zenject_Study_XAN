@@ -8,7 +8,7 @@ namespace MySimpleGameUsingZenject
     public class GameController : MonoBehaviour
     {
         [Inject] private SignalBus mSignalBus;
-        [Inject] private EnemyController mEnemyController;
+        [Inject] private NPCController mEnemyController;
         [Inject] private PlayerController mPlayerController;
 
 

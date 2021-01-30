@@ -5,11 +5,15 @@ using Zenject;
 
 namespace MySimpleGameUsingZenject
 {
-    public class EnemyController : MonoBehaviour
+    public class NPCController : MonoBehaviour
     {
         [Inject] private Setting mSetting;
+        
         private Vector3 mInitPos;
         private bool isEnableMoving = true;
+
+        [Inject] private GameModel mGameModel;
+
         private void Awake()
         {
             mInitPos = transform.localPosition;
@@ -23,6 +27,8 @@ namespace MySimpleGameUsingZenject
                 transform.Translate(-1 * mSetting.SpeedScale, 0, 0);
 
             }
+
+            mGameModel.NPCPos = transform.position;
         }
 
         [System.Serializable]

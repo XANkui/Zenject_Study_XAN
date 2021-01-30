@@ -12,21 +12,24 @@ namespace MySimpleGameUsingZenject
 
         static readonly string CONTENT_INFO = "  Player:{0} NPC:{1}";
         static readonly string TEXT_NAME = "Text";
-
-        [Inject] PlayerController mPlayerController;
-        [Inject] EnemyController mEnemyController;
-
+        [Inject] private GameModel mGameModel;
         private void Awake()
         {
             mText = transform.Find(TEXT_NAME).GetComponent<Text>();
         }
 
-        // Update is called once per frame
-        void Update()
+        private void Start()
         {
-            mText.text = string.Format(CONTENT_INFO, 
-                                    mPlayerController.transform.position,
-                                    mEnemyController.transform.position);
+            mGameModel.OnPlayerPosChanged += UpdateView;
+            mGameModel.OnNPCPosChanged += UpdateView;
+        }
+
+       
+        void UpdateView()
+        {
+            mText.text = string.Format(CONTENT_INFO,
+                                    mGameModel.PlayerPos,
+                                    mGameModel.NPCPos);
         }
     }
 }

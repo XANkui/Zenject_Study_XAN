@@ -7,7 +7,7 @@ namespace MySimpleGameUsingZenject
     public class GameSettingInstaller : ScriptableObjectInstaller<GameSettingInstaller>
     {
         public PlayerController.Setting PlayerControllerSetting;
-        public EnemyController.Setting EnemyControllerSetting;
+        public NPCController.Setting EnemyControllerSetting;
         public override void InstallBindings()
         {
             Container.BindInstance(PlayerControllerSetting);
