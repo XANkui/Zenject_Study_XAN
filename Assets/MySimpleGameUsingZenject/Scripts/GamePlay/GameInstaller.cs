@@ -17,6 +17,17 @@ namespace MySimpleGameUsingZenject
             Container.BindInterfacesAndSelfTo<GameModel>().AsSingle();
             Container.Bind<ViewModel>().AsSingle();
 
+            // 动态加载预制体
+            Container.Bind<GameInfoPanel>().FromComponentInNewPrefabResource("Prefabs/UIPanel/GameInfoPanel")
+                .UnderTransform(ctx=>ctx.Container.ResolveId<RectTransform>("UIRoot"))
+                .AsSingle().Lazy();
+            Container.Bind<GameOverPanel>().FromComponentInNewPrefabResource("Prefabs/UIPanel/GameOverPanel")
+                .UnderTransform(ctx => ctx.Container.ResolveId<RectTransform>("UIRoot"))
+                .AsSingle().Lazy(); 
+            Container.Bind<GameWinPanel>().FromComponentInNewPrefabResource("Prefabs/UIPanel/GameWinPanel")
+                .UnderTransform(ctx => ctx.Container.ResolveId<RectTransform>("UIRoot"))
+                .AsSingle().Lazy(); 
+
             // View Controller
             Container.BindController<GameInfoPanelController>();
             Container.BindController<GameOverPanelController>();

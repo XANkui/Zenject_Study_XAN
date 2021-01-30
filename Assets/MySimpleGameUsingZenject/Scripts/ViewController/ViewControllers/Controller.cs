@@ -76,8 +76,11 @@ namespace Jamjardavies.Zenject.ViewController
         public override void Dispose()
         {
             base.Dispose();
+            if (View)
+            {
+                Object.Destroy(View.gameObject);
 
-            Object.Destroy(View.gameObject);
+            }
 
             m_disposed.Invoke(this);
         }
