@@ -9,7 +9,7 @@ namespace MySimpleGameUsingZenject
     {
         [Inject] private Setting mSetting { get; set; }
         [Inject] SignalBus mSignalBus;
-        [Inject] GameModel mGameModel;
+        [Inject] ViewModel mGameModel;
 
         Rigidbody2D mRigidbody2D;
         private bool isEnableMoving = true;

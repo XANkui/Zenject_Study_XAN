@@ -10,6 +10,7 @@ namespace MySimpleGameUsingZenject
         [Inject] private SignalBus mSignalBus;
         [Inject] private GameOverPanel mGameOverPanel;
         [Inject] private GameWinPanel mGameWinPanel;
+        [Inject] private GameSaveService mGameSaveService;
 
 
         private void Start()
@@ -27,13 +28,19 @@ namespace MySimpleGameUsingZenject
         }
 
         public void OnGameOver(GameOverSignal gameOverSignal) {
+            GameModel gameModel = mGameSaveService.LoadGameModel();
+
             if (gameOverSignal.IsWin)
             {
+                gameModel.GameWinCount++;
                 ShowGameWinPanel();
             }
             else {
+                gameModel.GameOverCount++;
                 ShowGameOverPanel();
             }
+
+            mGameSaveService.SaveGameModel(gameModel);
         }
     }
 }

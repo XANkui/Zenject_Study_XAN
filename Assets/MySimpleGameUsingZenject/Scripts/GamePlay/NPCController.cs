@@ -12,7 +12,7 @@ namespace MySimpleGameUsingZenject
         private Vector3 mInitPos;
         private bool isEnableMoving = true;
 
-        [Inject] private GameModel mGameModel;
+        [Inject] private ViewModel mGameModel;
 
         private void Awake()
         {
