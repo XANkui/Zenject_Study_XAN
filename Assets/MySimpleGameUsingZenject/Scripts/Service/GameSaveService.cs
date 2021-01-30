@@ -14,14 +14,10 @@ namespace MySimpleGameUsingZenject
             PlayerPrefs.SetInt(GAME_WIN_COUNT, gameModel.GameWinCount);
         }
 
-        public GameModel LoadGameModel() {
-            GameModel gameModel = new GameModel
-            {
-                GameOverCount = PlayerPrefs.GetInt(GAME_OVER_COUNT,0),
-                GameWinCount = PlayerPrefs.GetInt(GAME_WIN_COUNT,0)
-            };
+        public void LoadGameModel(GameModel gameModel) {
 
-            return gameModel;
+            gameModel.GameOverCount = PlayerPrefs.GetInt(GAME_OVER_COUNT, 0);
+            gameModel.GameWinCount = PlayerPrefs.GetInt(GAME_WIN_COUNT, 0);
         }
     }
 }

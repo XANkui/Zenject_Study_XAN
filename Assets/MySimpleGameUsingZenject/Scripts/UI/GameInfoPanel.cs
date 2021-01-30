@@ -13,8 +13,8 @@ namespace MySimpleGameUsingZenject
         static readonly string CONTENT_INFO = "  Player:{0} NPC:{1}\n" +
                                               "  Win:{2} Over:{3}";
         static readonly string TEXT_NAME = "Text";
-        [Inject] private ViewModel mGameModel;
-        [Inject] private GameSaveService mGameSaveService;
+        [Inject] private ViewModel mViewModel;
+        [Inject] private GameModel mGameModel;
         private void Awake()
         {
             mText = transform.Find(TEXT_NAME).GetComponent<Text>();
@@ -24,18 +24,18 @@ namespace MySimpleGameUsingZenject
         {
             UpdateView(Vector3.zero);
 
-            mGameModel.PlayerPos.OnValueChangedEvent += UpdateView;
-            mGameModel.NPCPos.OnValueChangedEvent += UpdateView;
+            mViewModel.PlayerPos.OnValueChangedEvent += UpdateView;
+            mViewModel.NPCPos.OnValueChangedEvent += UpdateView;
         }
 
        
         void UpdateView(Vector3 pos)
         {
             mText.text = string.Format(CONTENT_INFO,
-                                    mGameModel.PlayerPos.Value,
-                                    mGameModel.NPCPos.Value,
-                                    mGameSaveService.LoadGameModel().GameWinCount,
-                                    mGameSaveService.LoadGameModel().GameOverCount);
+                                    mViewModel.PlayerPos.Value,
+                                    mViewModel.NPCPos.Value,
+                                    mGameModel.GameWinCount,
+                                    mGameModel.GameOverCount);
         }
     }
 }

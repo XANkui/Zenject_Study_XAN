@@ -13,6 +13,7 @@ namespace MySimpleGameUsingZenject
             Container.DeclareSignal<GameRestartSignal>();
 
             Container.Bind<GameSaveService>().AsSingle();
+            Container.BindInterfacesAndSelfTo<GameModel>().AsSingle();
             Container.Bind<ViewModel>().AsSingle();
             
         }
