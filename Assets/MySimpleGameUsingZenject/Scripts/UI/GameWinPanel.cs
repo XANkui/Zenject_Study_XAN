@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Jamjardavies.Zenject.ViewController;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,19 +7,16 @@ using Zenject;
 
 namespace MySimpleGameUsingZenject
 {
-    public class GameWinPanel : MonoBehaviour
+    public class GameWinPanel : View
     {
-        [Inject] SignalBus mSignalBus;
+        private Button mResetButton;
+
+        public Button ResetButton { get => mResetButton; private set => mResetButton = value; }
 
         private void Awake()
         {
-            
-            Show(false);
-            transform.Find("ResetButton").GetComponent<Button>()
-                .onClick.AddListener(() => {
-                    Show(false);
-                    mSignalBus.Fire<GameRestartSignal>();
-                });
+
+            ResetButton = transform.Find("ResetButton").GetComponent<Button>();
         }
 
 

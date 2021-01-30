@@ -7,7 +7,7 @@ namespace MySimpleGameUsingZenject
 {
     public class GameModel:IInitializable
     {
-        [Inject] GameSaveService mGameSaveService;
+        [Inject] IGameSaveService mGameSaveService;
 
         public Property<int> GameOverCount = new Property<int>();
         public Property<int> GameWinCount = new Property<int>();

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace MySimpleGameUsingZenject
 {
-    public class GameSaveService 
+    public class GameSaveService : IGameSaveService
     {
         const string GAME_OVER_COUNT = "GameOverCount";
         const string GAME_WIN_COUNT = "GameWinCount";

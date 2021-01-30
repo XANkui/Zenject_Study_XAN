@@ -9,7 +9,7 @@ namespace MySimpleGameUsingZenject
     {
         [Inject] private Setting mSetting { get; set; }
         [Inject] SignalBus mSignalBus;
-        [Inject] ViewModel mGameModel;
+        [Inject] ViewModel mViewModel;
 
         Rigidbody2D mRigidbody2D;
         private bool isEnableMoving = true;
@@ -31,7 +31,7 @@ namespace MySimpleGameUsingZenject
                     mRigidbody2D.AddForce(Vector2.up * mSetting.ForceScale);
                 }
             }
-            mGameModel.PlayerPos.Value = transform.position;
+            mViewModel.PlayerPos.Value = transform.position;
         }
 
         [System.Serializable]

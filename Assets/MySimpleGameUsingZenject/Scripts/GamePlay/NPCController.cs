@@ -12,7 +12,7 @@ namespace MySimpleGameUsingZenject
         private Vector3 mInitPos;
         private bool isEnableMoving = true;
 
-        [Inject] private ViewModel mGameModel;
+        [Inject] private ViewModel mViewModel;
 
         private void Awake()
         {
@@ -28,7 +28,7 @@ namespace MySimpleGameUsingZenject
 
             }
 
-            mGameModel.NPCPos.Value = transform.position;
+            mViewModel.NPCPos.Value = transform.position;
         }
 
         [System.Serializable]
