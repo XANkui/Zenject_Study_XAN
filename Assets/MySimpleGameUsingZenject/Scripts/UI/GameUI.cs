@@ -7,12 +7,10 @@ namespace MySimpleGameUsingZenject
 {
     public class GameUI : MonoBehaviour
     {
-        [Inject] private DiContainer mContainer;
         [Inject] private SignalBus mSignalBus;
-        private void Awake()
-        {
-            mContainer.BindInstance(this);
-        }
+        [Inject] private GameOverPanel mGameOverPanel;
+        [Inject] private GameWinPanel mGameWinPanel;
+
 
         private void Start()
         {
@@ -20,12 +18,12 @@ namespace MySimpleGameUsingZenject
         }
 
         public void ShowGameOverPanel() {
-            mContainer.Resolve<GameOverPanel>().Show();
+            mGameOverPanel.Show();
         }
 
         public void ShowGameWinPanel()
         {
-            mContainer.Resolve<GameWinPanel>().Show();
+            mGameWinPanel.Show();
         }
 
         public void OnGameOver(GameOverSignal gameOverSignal) {

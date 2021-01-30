@@ -8,13 +8,12 @@ namespace MySimpleGameUsingZenject
 {
     public class GameOverPanel : MonoBehaviour
     {
-        [Inject] DiContainer mContainer;
         [Inject] SignalBus mSignalBus;
 
         private void Awake()
         {
             
-            mContainer.BindInstance(this);
+            
             Show(false);
             transform.Find("ResetButton").GetComponent<Button>()
                 .onClick.AddListener(()=> {

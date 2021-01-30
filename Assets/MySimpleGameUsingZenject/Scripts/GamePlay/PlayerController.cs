@@ -8,15 +8,11 @@ namespace MySimpleGameUsingZenject
     public class PlayerController : MonoBehaviour
     {
         [Inject] private Setting mSetting { get; set; }
-        [Inject] DiContainer mContainer;
         [Inject] SignalBus mSignalBus;
 
         Rigidbody2D mRigidbody2D;
         private bool isEnableMoving = true;
-        private void Awake()
-        {
-            mContainer.BindInstance(this);
-        }
+
 
         private void Start()
         {

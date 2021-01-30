@@ -8,12 +8,10 @@ namespace MySimpleGameUsingZenject
     public class EnemyController : MonoBehaviour
     {
         [Inject] private Setting mSetting;
-        [Inject] DiContainer mContainer;
         private Vector3 mInitPos;
         private bool isEnableMoving = true;
         private void Awake()
         {
-            mContainer.BindInstance(this);
             mInitPos = transform.localPosition;
         }
 

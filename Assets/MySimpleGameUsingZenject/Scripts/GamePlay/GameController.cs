@@ -7,13 +7,11 @@ namespace MySimpleGameUsingZenject
 {
     public class GameController : MonoBehaviour
     {
-        [Inject] private DiContainer mContainer;
         [Inject] private SignalBus mSignalBus;
+        [Inject] private EnemyController mEnemyController;
+        [Inject] private PlayerController mPlayerController;
 
-        private void Awake()
-        {
-            mContainer.BindInstance(this);
-        }
+
         private void Start()
         {
             mSignalBus.Subscribe<GameRestartSignal>(OnGameRestart);
@@ -21,13 +19,13 @@ namespace MySimpleGameUsingZenject
         }
 
         public void OnGameRestart() {
-            mContainer.Resolve<EnemyController>().ReStart();
-            mContainer.Resolve<PlayerController>().ReStart();
+            mEnemyController.ReStart();
+            mPlayerController.ReStart();
         }
 
         public void OnGameOver(GameOverSignal gameOverSignal) {
-            mContainer.Resolve<EnemyController>().StopMoving();
-            mContainer.Resolve<PlayerController>().StopMoving();
+            mEnemyController.StopMoving();
+            mPlayerController.StopMoving();
         }
     }
 }
