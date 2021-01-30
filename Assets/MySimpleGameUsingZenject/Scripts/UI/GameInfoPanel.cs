@@ -22,20 +22,22 @@ namespace MySimpleGameUsingZenject
 
         private void Start()
         {
-            UpdateView(Vector3.zero);
+            UpdateView();
 
             mViewModel.PlayerPos.OnValueChangedEvent += UpdateView;
             mViewModel.NPCPos.OnValueChangedEvent += UpdateView;
+            mGameModel.GameOverCount.OnValueChangedEvent += UpdateView;
+            mGameModel.GameWinCount.OnValueChangedEvent += UpdateView;
         }
 
        
-        void UpdateView(Vector3 pos)
+        void UpdateView()
         {
             mText.text = string.Format(CONTENT_INFO,
                                     mViewModel.PlayerPos.Value,
                                     mViewModel.NPCPos.Value,
-                                    mGameModel.GameWinCount,
-                                    mGameModel.GameOverCount);
+                                    mGameModel.GameWinCount.Value,
+                                    mGameModel.GameOverCount.Value);
         }
     }
 }

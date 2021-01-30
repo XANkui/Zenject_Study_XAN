@@ -20,12 +20,12 @@ namespace MySimpleGameUsingZenject
 
                     if (OnValueChangedEvent!=null)
                     {
-                        OnValueChangedEvent.Invoke(value);
+                        OnValueChangedEvent.Invoke();
                     }
                 }
             }
         }
 
-        public event Action<T> OnValueChangedEvent;
+        public event Action OnValueChangedEvent;
     }
 }

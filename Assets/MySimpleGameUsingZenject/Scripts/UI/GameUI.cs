@@ -31,11 +31,11 @@ namespace MySimpleGameUsingZenject
 
             if (gameOverSignal.IsWin)
             {
-                mGameModel.GameWinCount++;
+                mGameModel.GameWinCount.Value++;
                 ShowGameWinPanel();
             }
             else {
-                mGameModel.GameOverCount++;
+                mGameModel.GameOverCount.Value++;
                 ShowGameOverPanel();
             }
 

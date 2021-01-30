@@ -9,8 +9,8 @@ namespace MySimpleGameUsingZenject
     {
         [Inject] GameSaveService mGameSaveService;
 
-        public int GameOverCount;
-        public int GameWinCount;
+        public Property<int> GameOverCount = new Property<int>();
+        public Property<int> GameWinCount = new Property<int>();
 
         public void Save() {
             mGameSaveService.SaveGameModel(this);

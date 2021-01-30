@@ -13,6 +13,7 @@ namespace MySimpleGameUsingZenject
             Container.DeclareSignal<GameRestartSignal>();
 
             Container.Bind<GameSaveService>().AsSingle();
+            // 继承了 Interface 接口 所以使用 BindInterfacesAndSelfTo
             Container.BindInterfacesAndSelfTo<GameModel>().AsSingle();
             Container.Bind<ViewModel>().AsSingle();
             
