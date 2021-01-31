@@ -57,6 +57,21 @@ namespace Jamjardavies.Zenject.ViewController
     public abstract class Controller<T> : Controller
         where T : View
     {
+        #region 新加的
+        private DiContainer mDiContainer;
+
+        //public Controller(DiContainer container) {
+        //    // 资源路径和名称被局限了
+        //    container.Bind<T>()
+        //        .FromComponentInNewPrefabResource(typeof(T).Name)
+        //        .WithGameObjectName(typeof(T))
+        //}
+
+        #endregion
+
+
+
+
         [Inject]
         private T m_view = null;
 
@@ -81,6 +96,9 @@ namespace Jamjardavies.Zenject.ViewController
                 Object.Destroy(View.gameObject);
 
             }
+
+            // 新加
+            //mCantainer.Unbind<T>();
 
             m_disposed.Invoke(this);
         }

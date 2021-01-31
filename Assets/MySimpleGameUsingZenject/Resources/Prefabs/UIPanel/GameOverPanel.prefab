@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 244369788415736814}
   - component: {fileID: 244369788415736813}
   - component: {fileID: 244369788415736815}
-  - component: {fileID: 244369788415736816}
   m_Layer: 5
   m_Name: GameOverPanel
   m_TagString: Untagged
@@ -90,24 +89,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4193adcc2e640284d9ca533679231b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &244369788415736816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 244369788415736811}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0166d8ff8d905b048b2448179e1f5d11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _components:
-  - {fileID: 244369788415736815}
-  _identifier: 
-  _useSceneContext: 0
-  _context: {fileID: 0}
-  _bindType: 0
 --- !u!1 &244369788751236212
 GameObject:
   m_ObjectHideFlags: 0
