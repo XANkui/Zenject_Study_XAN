@@ -23,6 +23,7 @@ namespace MySimpleGameUsingZenject
 
         public override void OnDestroy()
         {
+            mSignalBus = null;
         }
     }
 }

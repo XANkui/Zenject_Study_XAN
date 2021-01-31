@@ -8,35 +8,28 @@ namespace MySimpleGameUsingZenject
     public class GameUI : MonoBehaviour
     {
         [Inject] private SignalBus mSignalBus;
-        [Inject] private GameOverPanel mGameOverPanel;
-        [Inject] private GameWinPanel mGameWinPanel;
         [Inject] private GameModel mGameModel;
-
+        [Inject] private DiContainer mContainer;
+        [Inject] private UIManager mUIManager;
 
         private void Start()
         {
             mSignalBus.Subscribe<GameOverSignal>(OnGameOver);
+            mUIManager.OpenPanel<GameInfoPanelController>();
         }
 
-        public void ShowGameOverPanel() {
-            mGameOverPanel.Show();
-        }
-
-        public void ShowGameWinPanel()
-        {
-            mGameWinPanel.Show();
-        }
+  
 
         public void OnGameOver(GameOverSignal gameOverSignal) {
 
             if (gameOverSignal.IsWin)
             {
                 mGameModel.GameWinCount.Value++;
-                ShowGameWinPanel();
+                mUIManager.OpenPanel<GameWinPanelController>().View.Show();
             }
             else {
                 mGameModel.GameOverCount.Value++;
-                ShowGameOverPanel();
+                mUIManager.OpenPanel<GameOverPanelController>().View.Show();
             }
 
             mGameModel.Save();

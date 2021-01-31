@@ -58,22 +58,30 @@ namespace Jamjardavies.Zenject.ViewController
         where T : View
     {
         #region 新加的
-        private DiContainer mDiContainer;
 
-        //public Controller(DiContainer container) {
-        //    // 资源路径和名称被局限了
-        //    container.Bind<T>()
-        //        .FromComponentInNewPrefabResource(typeof(T).Name)
-        //        .WithGameObjectName(typeof(T))
-        //}
+        private DiContainer mContainerInstance;
+        [Inject]
+        private DiContainer mContainer {
+            get { return mContainerInstance; }
+            set {
+
+                Debug.Log(GetType()+ "/DiContainer Setter()/……");
+
+                mContainerInstance = value;
+
+                // 资源路径和名称被局限了
+                value.Bind<T>()
+                    .FromComponentInNewPrefabResource(typeof(T).Name)
+                    .WithGameObjectName(typeof(T).Name)
+                    .UnderTransform(ctx => ctx.Container.ResolveId<RectTransform>("UIRoot"))
+                    .AsCached();
+            }
+        }
 
         #endregion
 
-
-
-
-        [Inject]
-        private T m_view = null;
+        
+        private T mView = null;
 
         private event System.Action<Controller<T>> m_disposed = delegate { };
 
@@ -83,9 +91,11 @@ namespace Jamjardavies.Zenject.ViewController
             remove { m_disposed -= value; }
         }
 
+        [Inject]
         public T View
         {
-            get { return m_view; }
+            get { return mView; }
+            set { mView = value; }
         }
 
         public override void Dispose()
@@ -98,7 +108,7 @@ namespace Jamjardavies.Zenject.ViewController
             }
 
             // 新加
-            //mCantainer.Unbind<T>();
+            mContainerInstance.Unbind<T>();
 
             m_disposed.Invoke(this);
         }

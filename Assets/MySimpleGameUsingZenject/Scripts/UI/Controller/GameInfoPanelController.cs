@@ -29,6 +29,10 @@ namespace MySimpleGameUsingZenject
         public override void OnDestroy()
         {
             Debug.Log(GetType() + "/OnDestroy()/ ……");
+            mViewModel.PlayerPos.OnValueChangedEvent -= UpdateView;
+            mViewModel.NPCPos.OnValueChangedEvent -= UpdateView;
+            mGameModel.GameOverCount.OnValueChangedEvent -= UpdateView;
+            mGameModel.GameWinCount.OnValueChangedEvent -= UpdateView;
         }
 
         void UpdateView()
